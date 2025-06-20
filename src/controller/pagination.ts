@@ -3,7 +3,7 @@ import User from "../models/userModel";
 
 export const getPaginationCards = async (req: Request, res: Response): Promise<void> => {
     const page = parseInt(req.query.page as string) || 1;
-    const limit = 6;
+    const limit = 3;
     const offset = (page - 1) * limit;
     try {
 
@@ -13,8 +13,8 @@ export const getPaginationCards = async (req: Request, res: Response): Promise<v
             order: [['id', 'ASC']]
         });
 
-        console.log('Count:', count);
-        console.log('Rows:', rows);
+        // console.log('Count:', count);
+        // console.log('Rows:', rows);
 
         const totalPages = Math.ceil(count / limit);
         res.status(200).json(
