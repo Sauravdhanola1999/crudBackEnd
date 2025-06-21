@@ -8,7 +8,7 @@ interface UserAttributes {
     email: string;
     isActive: boolean;
     password: string;
-    deletedAt?: Date | null; // Needed for paranoid
+    deletedAt?: Date | null; 
 }
 
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> { }
@@ -22,9 +22,7 @@ class User
     public isActive!: boolean;
     public password!: string;
     public deletedAt?: Date | null;
-
 }
-
 
 User.init(
     {

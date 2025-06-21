@@ -3,7 +3,6 @@ import sequelize from "./config/database";
 import userRoutes from "./routes/userRoutes";
 import cors from 'cors';
 
-
 const app: Application = express();
 app.use(cors({
     origin: 'http://localhost:3000', 
