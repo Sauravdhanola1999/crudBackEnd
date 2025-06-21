@@ -2,11 +2,12 @@ import { Request, Response } from "express";
 import User from "../models/userModel";
 
 
-export const createUser = async (req: Request, res: Response): Promise<void> => {
+export const createUser = async (req: Request, res: Response): Promise<any> => {
     const { name, email, password, isActive } = req.body;
     try {
         const user = await User.create({ name, email, password, isActive });
-        res.status(201).json(user);
+        console.log("USER: ", user)
+        return res.status(201).json(user);
     } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
@@ -20,7 +21,6 @@ export const getUsers = async (req: Request, res: Response): Promise<void> => {
         res.status(500).json({ message: error.message });
     }
 }
-
 
 export const getUser = async (req: Request, res: Response): Promise<void> => {
     try {

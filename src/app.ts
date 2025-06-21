@@ -3,10 +3,10 @@ import sequelize from "./config/database";
 import userRoutes from "./routes/userRoutes";
 import cors from 'cors';
 
-// creates app 
+
 const app: Application = express();
 app.use(cors({
-    origin: 'http://localhost:3000', // your frontend origin
+    origin: 'http://localhost:3000', 
 }));
 
 app.use(express.json());
