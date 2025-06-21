@@ -8,6 +8,7 @@ interface UserAttributes {
     email: string;
     isActive: boolean;
     password: string;
+    deletedAt?: Date | null; // Needed for paranoid
 }
 
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> { }
@@ -20,6 +21,8 @@ class User
     public email!: string;
     public isActive!: boolean;
     public password!: string;
+    public deletedAt?: Date | null;
+
 }
 
 
@@ -41,16 +44,21 @@ User.init(
         },
         isActive: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
             defaultValue: false
         },
         password: {
             type: DataTypes.STRING(128),
             allowNull: false
+        },
+        deletedAt: {
+            type: DataTypes.DATE,
+            allowNull: true,
         }
     },
     {
         tableName: "users",
+        paranoid: true,
+        timestamps: true,
         sequelize
     }
 );

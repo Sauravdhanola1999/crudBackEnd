@@ -10,7 +10,7 @@ const router: Router = Router();
 
 router.post('/',
     validateUser,
-     createUser);
+    createUser);
 router.get('/', getUsers);
 router.get('/cards', getPaginationCards);
 router.get('/:id', getUser);
